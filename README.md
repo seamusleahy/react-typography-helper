@@ -104,7 +104,7 @@ This replaces `'` and `"` with right and left quo=te marks.
 | Cases                                                         | Input                                              | Output                                    |
 | ------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------- |
 | Double Quotes                                                 | Andrew said, <mark>"</mark>I am tired<mark>"</mark>             | Andrew said, <mark>“</mark>I am tired<mark>”</mark>              |
-| Single Quotes                                                 | Tawny said, <mark>'</mark>just trying my best**'** | Tawny said, <mark>‘</mark>just trying my best<mark>’</mark> |
+| Single Quotes                                                 | Tawny said, <mark>'</mark>just trying my best<mark>'</mark> | Tawny said, <mark>‘</mark>just trying my best<mark>’</mark> |
 | Apostrophe                                                    | I shouldn<mark>'</mark>t have more                 | I shouldn<mark>’</mark>t have more                 |
 | Leading Apostrophe<br>(’til, ’tis, ’tude, ’twas, ’twere, ’em) | <mark>'</mark>Twas the night before                | <mark>’</mark>Twas the night before                |
 
