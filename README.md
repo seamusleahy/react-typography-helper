@@ -18,7 +18,7 @@ yarn add react-typography-helper"
 ## How-to use
 ```javascript
 import React from 'react';
-import TypographyHelper from 'react-typography-helper"'
+import TypographyHelper from 'react-typography-helper';
 
 export const MyArticle = ({title, body}) => (
   <article>
@@ -279,7 +279,7 @@ Using a `WrapQuoteElements`:
 // Output: <span class="ldq">“</span><span class="a">’</span>Em shouted, <span class="lsq">‘</span>free the flour!<span class="rsq">’</span><span class="rdq">”</span>
 ```
 
-Note: `apostrophe` and `rightSingle` both match the same character so the characters around james’ around it are used to inform which of the two it is. It isn’t perfect. Words that end in an apostrophe are matched as `rightSingle`: James’ bicycle.
+Note: `apostrophe` and `rightSingle` both match the same character so the characters around James’ around it are used to inform which of the two it is. It isn’t perfect. Words that end in an apostrophe are matched as `rightSingle`: James’ bicycle.
 
 ### `wrapParanthesis: boolean | ReactElement | WrapParanthesisElements`
 Default value: `false`
