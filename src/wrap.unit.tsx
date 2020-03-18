@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 import {
@@ -53,7 +54,7 @@ describe('The token utils', () => {
           newElementTokenWithText(<span className="n" />, 'BOB'),
         ]),
         newElementTokenWithText(<i />, '"'),
-      ])
+      ]),
     ).toEqual(
       <>
         <i>"</i>
@@ -62,7 +63,7 @@ describe('The token utils', () => {
           <span className="n">BOB</span>
         </mark>
         <i>"</i>
-      </>
+      </>,
     );
   });
 });
@@ -70,7 +71,7 @@ describe('The token utils', () => {
 describe('applyWrapAmpsersand()', () => {
   it('wraps an (&) in a top level string', () => {
     expect(
-      applyWrapAmpsersand(createTokenListFromString('Short & Long'), <mark />)
+      applyWrapAmpsersand(createTokenListFromString('Short & Long'), <mark />),
     ).toEqual([
       newTextToken('Short '),
       newElementTokenWithText(<mark />, '&'),
@@ -85,8 +86,8 @@ describe('applyWrapAmpsersand()', () => {
           newTextToken('Short '),
           newElementToken(<span />, [newTextToken('& Long')]),
         ],
-        <mark />
-      )
+        <mark />,
+      ),
     ).toEqual([
       newTextToken('Short '),
       newElementToken(<span />, [
@@ -103,8 +104,8 @@ describe('applyWrapMultipleCaps()', () => {
       applyWrapMultipleCaps(
         createTokenListFromString('Meet us at NEGDR'),
         <mark />,
-        2
-      )
+        2,
+      ),
     ).toEqual([
       newTextToken('Meet us at '),
       newElementTokenWithText(<mark />, 'NEGDR'),
@@ -116,8 +117,8 @@ describe('applyWrapMultipleCaps()', () => {
       applyWrapMultipleCaps(
         createTokenListFromString('What is J about'),
         <mark />,
-        1
-      )
+        1,
+      ),
     ).toEqual([
       newTextToken('What is '),
       newElementTokenWithText(<mark />, 'J'),
@@ -130,8 +131,8 @@ describe('applyWrapMultipleCaps()', () => {
       applyWrapMultipleCaps(
         createTokenListFromString('Meet us at KN'),
         <mark />,
-        3
-      )
+        3,
+      ),
     ).toEqual([newTextToken('Meet us at KN')]);
   });
 
@@ -143,8 +144,8 @@ describe('applyWrapMultipleCaps()', () => {
           newElementToken(<span />, [newTextToken('at OOO')]),
         ],
         <mark />,
-        2
-      )
+        2,
+      ),
     ).toEqual([
       newTextToken('When '),
       newElementToken(<span />, [
@@ -160,8 +161,8 @@ describe('applyWrapOrdinalIndicator()', () => {
     expect(
       applyWrapOrdinalIndicator(
         createTokenListFromString('On the 21st'),
-        <mark />
-      )
+        <mark />,
+      ),
     ).toEqual([
       newTextToken('On the 21'),
       newElementTokenWithText(<mark />, 'st'),
@@ -170,8 +171,8 @@ describe('applyWrapOrdinalIndicator()', () => {
     expect(
       applyWrapOrdinalIndicator(
         createTokenListFromString('On the 22ND day'),
-        <mark />
-      )
+        <mark />,
+      ),
     ).toEqual([
       newTextToken('On the 22'),
       newElementTokenWithText(<mark />, 'ND'),
@@ -179,7 +180,7 @@ describe('applyWrapOrdinalIndicator()', () => {
     ]);
 
     expect(
-      applyWrapOrdinalIndicator(createTokenListFromString('3rd week'), <mark />)
+      applyWrapOrdinalIndicator(createTokenListFromString('3rd week'), <mark />),
     ).toEqual([
       newTextToken('3'),
       newElementTokenWithText(<mark />, 'rd'),
@@ -189,8 +190,8 @@ describe('applyWrapOrdinalIndicator()', () => {
     expect(
       applyWrapOrdinalIndicator(
         createTokenListFromString('110,045th'),
-        <mark />
-      )
+        <mark />,
+      ),
     ).toEqual([
       newTextToken('110,045'),
       newElementTokenWithText(<mark />, 'th'),
@@ -201,8 +202,8 @@ describe('applyWrapOrdinalIndicator()', () => {
     expect(
       applyWrapOrdinalIndicator(
         [newElementToken(<span />, [newTextToken('1st')])],
-        <mark />
-      )
+        <mark />,
+      ),
     ).toEqual([
       newElementToken(<span />, [
         newTextToken('1'),
@@ -220,7 +221,7 @@ describe('applyWrapParanthesis()', () => {
         rightParanthesis: <mark />,
         leftSquareParanthesis: <u />,
         rightSquareParanthesis: <b />,
-      })
+      }),
     ).toEqual([
       newTextToken('How to '),
       newElementTokenWithText(<i />, '('),
@@ -245,8 +246,8 @@ describe('applyWrapParanthesis()', () => {
           rightParanthesis: <mark />,
           leftSquareParanthesis: <u />,
           rightSquareParanthesis: <b />,
-        }
-      )
+        },
+      ),
     ).toEqual([
       newTextToken('How to '),
       newElementTokenWithText(<i />, '('),
@@ -275,8 +276,8 @@ describe('applyWrapQuotes()', () => {
           apostrophe: <li />,
           double: <ol />,
           single: <ul />,
-        }
-      )
+        },
+      ),
     ).toEqual([
       newElementTokenWithText(<li />, '’'),
       newTextToken('Twas the '),

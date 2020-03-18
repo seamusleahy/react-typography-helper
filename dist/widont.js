@@ -1,11 +1,10 @@
 import { newTextToken, newElementTokenWithText, } from './wrap';
 export function shouldApplyWidontBasedOnLength(secondToLastWord, lastWord, maxLastWordLength, maxLastTwoWordsLength) {
-    return (lastWord.length > maxLastWordLength ||
-        secondToLastWord.length + lastWord.length + 1 > maxLastTwoWordsLength);
+    return (lastWord.length > maxLastWordLength
+        || secondToLastWord.length + lastWord.length + 1 > maxLastTwoWordsLength);
 }
 const WIDONT_REGEX = /(.*\s)?(\S+)\s+(\S+)(\s*)$/;
-export function applyWidont(text, maxLastWordLength, maxLastTwoWordsLength // Includes the space between the two words
-) {
+export function applyWidont(text, maxLastWordLength, maxLastTwoWordsLength) {
     const m = text.match(WIDONT_REGEX);
     if (m === null) {
         return text;
@@ -20,8 +19,7 @@ export function applyWidont(text, maxLastWordLength, maxLastTwoWordsLength // In
     return `${beforeText}${aWord}${"\u00A0" /* nonBreakingSpace */}${bWord}${extraSpaces}`;
 }
 const WIDONT_WRAP_REGEX = new RegExp(`(.*\\s)?((\\S+)[\\s${"\u00A0" /* nonBreakingSpace */}]+(\\S+))(\\s*)$`);
-export function applyWrapWidont(tokens, wrapElement, maxLastWordLength, maxLastTwoWordsLength // Includes the space between the two words
-) {
+export function applyWrapWidont(tokens, wrapElement, maxLastWordLength, maxLastTwoWordsLength) {
     if (tokens.length === 0) {
         return [];
     }

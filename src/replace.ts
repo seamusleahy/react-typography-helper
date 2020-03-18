@@ -20,38 +20,37 @@ export function applySmartQuotes(text: string) {
   // 1. Simple apostrophes: don't
   t = t.replace(
     APOSTROPHE_REGEX,
-    (_, a, b) => `${a}${CHARACTERS.rightSingleQuotes}${b}`
+    (_, a, b) => `${a}${CHARACTERS.rightSingleQuotes}${b}`,
   );
 
   // 2. Leading apostrophes: 'Twas
   t = t.replace(
     LEADING_APOSTROPHE_REGEX,
-    (_, prefix, w) => `${prefix}${CHARACTERS.rightSingleQuotes}${w}`
+    (_, prefix, w) => `${prefix}${CHARACTERS.rightSingleQuotes}${w}`,
   );
 
   // 3. Double quotes: "Hello World"
   t = t.replace(
     DOUBLE_QUOTES_REGEX,
-    (_, s) =>
-      `${CHARACTERS.leftDoubleQuotes}${s}${CHARACTERS.rightDoubleQuotes}`
+    (_, s) => `${CHARACTERS.leftDoubleQuotes}${s}${CHARACTERS.rightDoubleQuotes}`,
   );
 
   // 4. Single quotes: 'Hello World'
   // This also matches trailing apostrophes: James' bicycle
   t = t.replace(
     LEFT_SINGLE_QUOTE_REGEX,
-    (_, pre, post) => `${pre}${CHARACTERS.leftSingleQuotes}${post}`
+    (_, pre, post) => `${pre}${CHARACTERS.leftSingleQuotes}${post}`,
   );
   t = t.replace(
     RIGHT_SINGLE_QUOTE_REGEX,
-    (_, pre, post) => `${pre}${CHARACTERS.rightSingleQuotes}${post}`
+    (_, pre, post) => `${pre}${CHARACTERS.rightSingleQuotes}${post}`,
   );
   return t;
 }
 
 const THREE_DOTS_REGEX = /\.{3,}/g;
 export function applySmartEllipsis(text: string) {
-  return text.replace(THREE_DOTS_REGEX, dots => {
+  return text.replace(THREE_DOTS_REGEX, (dots) => {
     if (dots.length === 3) {
       return CHARACTERS.ellipsis;
     }
@@ -61,7 +60,7 @@ export function applySmartEllipsis(text: string) {
 
 const DASH_REGEX = /-{2,}/g;
 export function applySmartDashes(text: string) {
-  return text.replace(DASH_REGEX, dashes => {
+  return text.replace(DASH_REGEX, (dashes) => {
     if (dashes.length === 3) {
       // em dash
       return CHARACTERS.emDash;

@@ -6,7 +6,7 @@ import { WrapQuoteElements, WrapParanthesisElements } from './wrap';
 
 export const defaultAmpersandElement = <span className="amp" />;
 export function wrapAmpersandElement(
-  wrapAmpersand: boolean | React.ReactElement
+  wrapAmpersand: boolean | React.ReactElement,
 ) {
   if (wrapAmpersand === true || wrapAmpersand === false) {
     return defaultAmpersandElement;
@@ -16,7 +16,7 @@ export function wrapAmpersandElement(
 
 export const defaultMultipleCapsElement = <span className="caps" />;
 export function wrapMultipleCapsElement(
-  wrapMultipileCapitals: boolean | React.ReactElement
+  wrapMultipileCapitals: boolean | React.ReactElement,
 ) {
   if (wrapMultipileCapitals === true || wrapMultipileCapitals === false) {
     return defaultMultipleCapsElement;
@@ -26,11 +26,11 @@ export function wrapMultipleCapsElement(
 
 export const defaultOrdinalIndicatorElement = <span className="ords" />;
 export function wrapOrdinalIndicatorElement(
-  wrapOrdinalIndicatordinal: boolean | React.ReactElement
+  wrapOrdinalIndicatordinal: boolean | React.ReactElement,
 ) {
   if (
-    wrapOrdinalIndicatordinal === true ||
-    wrapOrdinalIndicatordinal === false
+    wrapOrdinalIndicatordinal === true
+    || wrapOrdinalIndicatordinal === false
   ) {
     return defaultOrdinalIndicatorElement;
   }
@@ -55,7 +55,7 @@ export const defaultQuoteElements: WrapQuoteElements = {
   apostrophe: <span className="apostrophe" />,
 };
 export function wrapQuoteElements(
-  wrapQuotes: boolean | React.ReactElement | WrapQuoteElements
+  wrapQuotes: boolean | React.ReactElement | WrapQuoteElements,
 ): WrapQuoteElements {
   if (wrapQuotes === true || wrapQuotes === false) {
     return defaultQuoteElements;
@@ -84,7 +84,7 @@ export const defaultParanthesisElements: WrapParanthesisElements = {
 };
 
 export function wrapParanthesisElements(
-  wrapParanthesis: boolean | React.ReactElement | WrapParanthesisElements
+  wrapParanthesis: boolean | React.ReactElement | WrapParanthesisElements,
 ): WrapParanthesisElements {
   if (wrapParanthesis === true || wrapParanthesis === false) {
     return defaultParanthesisElements;

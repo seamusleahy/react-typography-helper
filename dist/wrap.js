@@ -22,7 +22,7 @@ export function createTokenListFromString(text) {
     return [newTextToken(text)];
 }
 function hydrateReactChildrenFromTokenList(tokens) {
-    const hydrated = tokens.map(child => {
+    const hydrated = tokens.map((child) => {
         if (child.type === 0 /* text */) {
             return child.text;
         }
@@ -63,7 +63,7 @@ function defaultMatchParts(matches) {
  */
 function wrapText(tokens, needle, wrapper, getMatchParts = defaultMatchParts) {
     const results = [];
-    tokens.forEach(token => {
+    tokens.forEach((token) => {
         if (token.type === 0 /* text */) {
             let remaining = token.text;
             while (remaining.length > 0) {
@@ -102,8 +102,8 @@ export function applyWrapMultipleCaps(tokens, wrapElement, minLength) {
     if (minLength <= 1) {
         return wrapText(tokens, /\b[A-Z]\b/, wrapElement);
     }
-    const needle = new RegExp(`\\b(\\d[A-Z][A-Z\\d]{${minLength - 2},}|[A-Z][A-Z\\d]{${minLength -
-        1},})\\b`);
+    const needle = new RegExp(`\\b(\\d[A-Z][A-Z\\d]{${minLength - 2},}|[A-Z][A-Z\\d]{${minLength
+        - 1},})\\b`);
     return wrapText(tokens, needle, wrapElement);
 }
 const AMPERSAND_REGEX = new RegExp("&" /* ampersand */);

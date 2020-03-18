@@ -27,7 +27,7 @@ export function applySmartQuotes(text) {
 }
 const THREE_DOTS_REGEX = /\.{3,}/g;
 export function applySmartEllipsis(text) {
-    return text.replace(THREE_DOTS_REGEX, dots => {
+    return text.replace(THREE_DOTS_REGEX, (dots) => {
         if (dots.length === 3) {
             return "\u2026" /* ellipsis */;
         }
@@ -36,7 +36,7 @@ export function applySmartEllipsis(text) {
 }
 const DASH_REGEX = /-{2,}/g;
 export function applySmartDashes(text) {
-    return text.replace(DASH_REGEX, dashes => {
+    return text.replace(DASH_REGEX, (dashes) => {
         if (dashes.length === 3) {
             // em dash
             return "\u2014" /* emDash */;

@@ -5,9 +5,9 @@ import * as replace from './replace';
 import * as widont from './widont';
 import * as wrap from './wrap';
 
-export interface TypographyHacksProps {
+export interface TypographyHelperProps {
   /**
-   * The text to display and apply the type hacks to
+   * The text to display and apply the type helper to
    */
   text: string;
 
@@ -147,14 +147,14 @@ export interface TypographyHacksProps {
   updateOnlyWhenTextChanges?: boolean;
 }
 
-export default class TypographyHacks extends React.Component<
-  TypographyHacksProps
+export default class TypographyHelper extends React.Component<
+TypographyHelperProps
 > {
   /* eslint-disable react/destructuring-assignment */
-  shouldComponentUpdate(nextProps: TypographyHacksProps) {
+  shouldComponentUpdate(nextProps: TypographyHelperProps) {
     if (
-      this.props.updateOnlyWhenTextChanges === false ||
-      nextProps.updateOnlyWhenTextChanges === false
+      this.props.updateOnlyWhenTextChanges === false
+      || nextProps.updateOnlyWhenTextChanges === false
     ) {
       return true;
     }
@@ -189,7 +189,7 @@ export default class TypographyHacks extends React.Component<
       t = widont.applyWidont(
         t,
         widontMaxLastWordLength,
-        widontMaxLastTwoWordsLength
+        widontMaxLastTwoWordsLength,
       );
     }
     if (smartQuotes) {
@@ -208,28 +208,28 @@ export default class TypographyHacks extends React.Component<
         tokens,
         defaultWrapElements.wrapWidontElement(wrapWidont),
         widontMaxLastWordLength,
-        widontMaxLastTwoWordsLength
+        widontMaxLastTwoWordsLength,
       );
     }
 
     if (wrapQuotes) {
       tokens = wrap.applyWrapQuotes(
         tokens,
-        defaultWrapElements.wrapQuoteElements(wrapQuotes)
+        defaultWrapElements.wrapQuoteElements(wrapQuotes),
       );
     }
 
     if (wrapOrdinalIndicator) {
       tokens = wrap.applyWrapOrdinalIndicator(
         tokens,
-        defaultWrapElements.wrapOrdinalIndicatorElement(wrapOrdinalIndicator)
+        defaultWrapElements.wrapOrdinalIndicatorElement(wrapOrdinalIndicator),
       );
     }
 
     if (wrapAmpersand) {
       tokens = wrap.applyWrapAmpsersand(
         tokens,
-        defaultWrapElements.wrapAmpersandElement(wrapAmpersand)
+        defaultWrapElements.wrapAmpersandElement(wrapAmpersand),
       );
     }
 
@@ -237,14 +237,14 @@ export default class TypographyHacks extends React.Component<
       tokens = wrap.applyWrapMultipleCaps(
         tokens,
         defaultWrapElements.wrapMultipleCapsElement(wrapMultipileCapitals),
-        wrapMultipileCapitalsMinLength
+        wrapMultipileCapitalsMinLength,
       );
     }
 
     if (wrapParanthesis) {
       tokens = wrap.applyWrapParanthesis(
         tokens,
-        defaultWrapElements.wrapParanthesisElements(wrapParanthesis)
+        defaultWrapElements.wrapParanthesisElements(wrapParanthesis),
       );
     }
 

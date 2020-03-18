@@ -1,4 +1,4 @@
-import TypographyHacks from './TypographyHacks';
+import TypographyHelper from './TypographyHelper';
 
 export { applyWidont, applyWrapWidont } from './widont';
 export {
@@ -19,4 +19,4 @@ export {
   createTokenListFromString,
 } from './wrap';
 
-export default TypographyHacks;
+export default TypographyHelper;

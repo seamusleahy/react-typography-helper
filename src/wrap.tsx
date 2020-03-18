@@ -33,7 +33,7 @@ export function newTextToken(text: string): TextToken {
 
 export function newElementToken(
   refElement: React.ReactElement,
-  children: TokenList
+  children: TokenList,
 ): ElementToken {
   return {
     type: TOKEN_TYPE.element,
@@ -44,7 +44,7 @@ export function newElementToken(
 
 export function newElementTokenWithText(
   refElement: React.ReactElement,
-  text: string
+  text: string,
 ): ElementToken {
   return newElementToken(refElement, [newTextToken(text)]);
 }
@@ -54,9 +54,9 @@ export function createTokenListFromString(text: string): TokenList {
 }
 
 function hydrateReactChildrenFromTokenList(
-  tokens: TokenList
+  tokens: TokenList,
 ): (string | React.ReactElement)[] {
-  const hydrated = tokens.map(child => {
+  const hydrated = tokens.map((child) => {
     if (child.type === TOKEN_TYPE.text) {
       return child.text;
     }
@@ -72,14 +72,14 @@ function hydrateReactChildrenFromTokenList(
 }
 
 function hydrateReactElementFromElementToken(
-  token: ElementToken
+  token: ElementToken,
 ): React.ReactElement {
   const hydratedChildren = hydrateReactChildrenFromTokenList(token.children);
   return React.cloneElement(token.refElement, {}, ...hydratedChildren);
 }
 
 export function createReactFragmentFromTokenList(
-  tokens: TokenList
+  tokens: TokenList,
 ): React.ReactFragment {
   const hydrated = hydrateReactChildrenFromTokenList(tokens);
   return React.createElement(React.Fragment, {}, ...hydrated);
@@ -135,10 +135,10 @@ function wrapText(
   tokens: TokenList,
   needle: RegExp,
   wrapper: React.ReactElement,
-  getMatchParts = defaultMatchParts
+  getMatchParts = defaultMatchParts,
 ): TokenList {
   const results: TokenList = [];
-  tokens.forEach(token => {
+  tokens.forEach((token) => {
     if (token.type === TOKEN_TYPE.text) {
       let remaining = token.text;
       while (remaining.length > 0) {
@@ -163,8 +163,8 @@ function wrapText(
       results.push(
         newElementToken(
           token.refElement,
-          wrapText(token.children, needle, wrapper, getMatchParts)
-        )
+          wrapText(token.children, needle, wrapper, getMatchParts),
+        ),
       );
     }
   });
@@ -182,15 +182,15 @@ function wrapText(
 export function applyWrapMultipleCaps(
   tokens: TokenList,
   wrapElement: React.ReactElement,
-  minLength: number
+  minLength: number,
 ) {
   if (minLength <= 1) {
     return wrapText(tokens, /\b[A-Z]\b/, wrapElement);
   }
 
   const needle = new RegExp(
-    `\\b(\\d[A-Z][A-Z\\d]{${minLength - 2},}|[A-Z][A-Z\\d]{${minLength -
-      1},})\\b`
+    `\\b(\\d[A-Z][A-Z\\d]{${minLength - 2},}|[A-Z][A-Z\\d]{${minLength
+      - 1},})\\b`,
   );
   return wrapText(tokens, needle, wrapElement);
 }
@@ -202,7 +202,7 @@ const AMPERSAND_REGEX = new RegExp(CHARACTERS.ampersand);
  */
 export function applyWrapAmpsersand(
   tokens: TokenList,
-  wrapElement: React.ReactElement
+  wrapElement: React.ReactElement,
 ) {
   return wrapText(tokens, AMPERSAND_REGEX, wrapElement);
 }
@@ -225,7 +225,7 @@ const ORDINAL_REGEX = /(\d)(st|nd|rd|th)\b/i;
  */
 export function applyWrapOrdinalIndicator(
   tokens: TokenList,
-  wrapElement: React.ReactElement
+  wrapElement: React.ReactElement,
 ) {
   return wrapText(tokens, ORDINAL_REGEX, wrapElement, ordinalMatchParts);
 }
@@ -242,7 +242,7 @@ export interface WrapQuoteElements {
 
 const LEFT_SINGLE_QUOTE_REGEX = new RegExp(CHARACTERS.leftSingleQuotes);
 const RIGHT_SINGLE_QUOTE_REGEX = new RegExp(
-  `${CHARACTERS.rightSingleQuotes}\\B`
+  `${CHARACTERS.rightSingleQuotes}\\B`,
 );
 
 const APOSTROPHE_REGEX = new RegExp(`${CHARACTERS.rightSingleQuotes}\\b`);
@@ -258,7 +258,7 @@ const DOUBLE_QUOTE_REGEX = new RegExp(CHARACTERS.doubleQuotes);
  */
 export function applyWrapQuotes(
   tokens: TokenList,
-  wrapElements: WrapQuoteElements
+  wrapElements: WrapQuoteElements,
 ) {
   let t = tokens;
   // double
@@ -287,15 +287,15 @@ const LEFT_PARAN_REGEX = new RegExp(`\\${CHARACTERS.leftParanthesis}`);
 const RIGHT_PARAN_REGEX = new RegExp(`\\${CHARACTERS.rightParanthesis}`);
 
 const LEFT_SQUARE_PARAN_REGEX = new RegExp(
-  `\\${CHARACTERS.leftSquareParanthesis}`
+  `\\${CHARACTERS.leftSquareParanthesis}`,
 );
 const RIGHT_SQUARE_PARAN_REGEX = new RegExp(
-  `\\${CHARACTERS.rightSquareParanthesis}`
+  `\\${CHARACTERS.rightSquareParanthesis}`,
 );
 
 export function applyWrapParanthesis(
   tokens: TokenList,
-  wrapElements: WrapParanthesisElements
+  wrapElements: WrapParanthesisElements,
 ) {
   let t = tokens;
 
@@ -306,7 +306,7 @@ export function applyWrapParanthesis(
   t = wrapText(
     t,
     RIGHT_SQUARE_PARAN_REGEX,
-    wrapElements.rightSquareParanthesis
+    wrapElements.rightSquareParanthesis,
   );
 
   return t;

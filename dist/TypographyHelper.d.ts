@@ -1,8 +1,8 @@
 import React from 'react';
 import * as wrap from './wrap';
-export interface TypographyHacksProps {
+export interface TypographyHelperProps {
     /**
-     * The text to display and apply the type hacks to
+     * The text to display and apply the type helper to
      */
     text: string;
     /**
@@ -123,7 +123,7 @@ export interface TypographyHacksProps {
      */
     updateOnlyWhenTextChanges?: boolean;
 }
-export default class TypographyHacks extends React.Component<TypographyHacksProps> {
-    shouldComponentUpdate(nextProps: TypographyHacksProps): boolean;
+export default class TypographyHelper extends React.Component<TypographyHelperProps> {
+    shouldComponentUpdate(nextProps: TypographyHelperProps): boolean;
     render(): React.ReactFragment;
 }

@@ -18,8 +18,8 @@ export function wrapMultipleCapsElement(wrapMultipileCapitals) {
 }
 export const defaultOrdinalIndicatorElement = React.createElement("span", { className: "ords" });
 export function wrapOrdinalIndicatorElement(wrapOrdinalIndicatordinal) {
-    if (wrapOrdinalIndicatordinal === true ||
-        wrapOrdinalIndicatordinal === false) {
+    if (wrapOrdinalIndicatordinal === true
+        || wrapOrdinalIndicatordinal === false) {
         return defaultOrdinalIndicatorElement;
     }
     return wrapOrdinalIndicatordinal;

@@ -23,7 +23,7 @@ import { WrapParanthesisElements, WrapQuoteElements } from './wrap';
  */
 function testSingleElementDefault(
   getWrapElement: (x: boolean | React.ReactElement) => React.ReactElement,
-  defaultElement: React.ReactElement
+  defaultElement: React.ReactElement,
 ) {
   describe(`${getWrapElement.name}()`, () => {
     it('returns the default element when true is passed in', () => {
@@ -40,7 +40,7 @@ function testSingleElementDefault(
 testSingleElementDefault(wrapAmpersandElement, defaultAmpersandElement);
 testSingleElementDefault(
   wrapOrdinalIndicatorElement,
-  defaultOrdinalIndicatorElement
+  defaultOrdinalIndicatorElement,
 );
 testSingleElementDefault(wrapMultipleCapsElement, defaultMultipleCapsElement);
 testSingleElementDefault(wrapWidontElement, defaultWidontElement);

@@ -18,11 +18,11 @@ export function shouldApplyWidontBasedOnLength(
   secondToLastWord: string,
   lastWord: string,
   maxLastWordLength: number,
-  maxLastTwoWordsLength: number
+  maxLastTwoWordsLength: number,
 ): boolean {
   return (
-    lastWord.length > maxLastWordLength ||
-    secondToLastWord.length + lastWord.length + 1 > maxLastTwoWordsLength
+    lastWord.length > maxLastWordLength
+    || secondToLastWord.length + lastWord.length + 1 > maxLastTwoWordsLength
   );
 }
 
@@ -30,7 +30,7 @@ const WIDONT_REGEX = /(.*\s)?(\S+)\s+(\S+)(\s*)$/;
 export function applyWidont(
   text: string,
   maxLastWordLength: number,
-  maxLastTwoWordsLength: number // Includes the space between the two words
+  maxLastTwoWordsLength: number, // Includes the space between the two words
 ) {
   const m = text.match(WIDONT_REGEX);
 
@@ -48,7 +48,7 @@ export function applyWidont(
       aWord,
       bWord,
       maxLastWordLength,
-      maxLastTwoWordsLength
+      maxLastTwoWordsLength,
     )
   ) {
     return text;
@@ -58,14 +58,14 @@ export function applyWidont(
 }
 
 const WIDONT_WRAP_REGEX = new RegExp(
-  `(.*\\s)?((\\S+)[\\s${CHARACTERS.nonBreakingSpace}]+(\\S+))(\\s*)$`
+  `(.*\\s)?((\\S+)[\\s${CHARACTERS.nonBreakingSpace}]+(\\S+))(\\s*)$`,
 );
 
 export function applyWrapWidont(
   tokens: TokenList,
   wrapElement: React.ReactElement,
   maxLastWordLength: number,
-  maxLastTwoWordsLength: number // Includes the space between the two words
+  maxLastTwoWordsLength: number, // Includes the space between the two words
 ): TokenList {
   if (tokens.length === 0) {
     return [];
@@ -80,8 +80,8 @@ export function applyWrapWidont(
         [lastText],
         wrapElement,
         maxLastWordLength,
-        maxLastTwoWordsLength
-      )
+        maxLastTwoWordsLength,
+      ),
     );
   } else if (lastText && lastText.type === TOKEN_TYPE.text) {
     const m = lastText.text.match(WIDONT_WRAP_REGEX);
@@ -102,7 +102,7 @@ export function applyWrapWidont(
         aWord,
         bWord,
         maxLastWordLength,
-        maxLastTwoWordsLength
+        maxLastTwoWordsLength,
       )
     ) {
       results.push(lastText);

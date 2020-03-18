@@ -1,4 +1,4 @@
-# React Typography Hacks
+# React Typography Helper
 
 A React component to help with typography by replacing characters and inserting elements to attach custom styling to.
 
@@ -11,18 +11,18 @@ All the TypeScript definitions are included.
 
 ## Installation
 ```
-npm install react-typography-hacks"
+npm install react-typography-helper"
 // or
-yarn add react-typography-hacks"
+yarn add react-typography-helper"
 ```
 ## How-to use
 ```javascript
 import React from 'react';
-import TypographyHacks from 'react-typography-hacks"'
+import TypographyHelper from 'react-typography-helper"'
 
 export const MyArticle = ({title, body}) => (
   <article>
-    <h1><TypographyHacks text={title} widontNonBreakingSpace /></h1>
+    <h1><TypographyHelper text={title} widontNonBreakingSpace /></h1>
     <div dangerouslySetInnerHTML={{__html: body}} />
   </article>
 );
@@ -30,10 +30,10 @@ export const MyArticle = ({title, body}) => (
 
 
 ### `text: string` (required)
-The text to display and transform with the type hacks.
+The text to display and transform with the type helper.
 
 ```javascript
-<TypographyHacks text="The text to transform" />
+<TypographyHelper text="The text to transform" />
 // Output: The text to transform
 ```
 
@@ -43,7 +43,7 @@ Default value: `false`
 Replaces the space between the last two words with a non-breaking space to prevent widowing of the last word.
 
 ```javascript
-<TypographyHacks text="The text to transform" widontNonBreakingSpace />
+<TypographyHelper text="The text to transform" widontNonBreakingSpace />
 // Output: The text to&nbsp;transform
 ```
 
@@ -57,7 +57,7 @@ Default value: `false`
 Wraps the last two-words in an element for you to add CSS styles to prevent wrapping. This is useful when wanting to use Media Queries to conditionally prevent wrapping.
 
 ```javascript
-<TypographyHacks text="The text to transform" wrapWidont />
+<TypographyHelper text="The text to transform" wrapWidont />
 // Output: The text <span class="widont">to transform</span>
 ```
 
@@ -77,7 +77,7 @@ const Widont = styled.span`
     white-space: nowrap;
 }`;
 
-<TypographyHacks text="The text to transform" wrapWidont={Widont} />
+<TypographyHelper text="The text to transform" wrapWidont={Widont} />
 // Output: The text <span class="css-1pybesw">to transform</span> 
 ```
 
@@ -97,7 +97,7 @@ Default value: `false`
 This replaces `'` and `"` with right and left quo=te marks.
 
 ```javascript
-<TypographyHacks text={`"'Em shouted, 'free the flour!'"`} smartQuotes />
+<TypographyHelper text={`"'Em shouted, 'free the flour!'"`} smartQuotes />
 // Output: “’Em shouted, ‘free the flour!’”
 ```
 
@@ -116,7 +116,7 @@ Default value: `false`
 Replaces three periods (`...`) with an ellipsis (`…`).
 
 ```javascript
-<TypographyHacks text="Today..." smartEllipsis />
+<TypographyHelper text="Today..." smartEllipsis />
 // Output: Today…
 ```
 
@@ -128,7 +128,7 @@ Default value: `false`
 Replaces two-dashes (`--`) with an en-dash (`–`) and three-dashes (`---`) with an em-dash (—).
 
 ```javascript
-<TypographyHacks text="Where--what---why" smartDashes />
+<TypographyHelper text="Where--what---why" smartDashes />
 // Output: Where–what—why
 ```
 
@@ -142,7 +142,7 @@ Default value: `false`
 Wraps ampersands (`&`) in an element for the purpose of custom styling.
 
 ```javascript
-<TypographyHacks text="Flour & Yeast" wrapAmpersand />
+<TypographyHelper text="Flour & Yeast" wrapAmpersand />
 // Output: Flour <span class="amp">&amp;</span> Yeast
 ```
 
@@ -159,7 +159,7 @@ const Amp = styled.span`
   letter-spacing: -0.1em;
 `;
 
-<TypographyHacks text="Flour & Yeast" wrapAmpersand={Amp} />
+<TypographyHelper text="Flour & Yeast" wrapAmpersand={Amp} />
 // Output: Flour <span class="css-ork2sq">&amp;</span> Yeast
 ```
 
@@ -173,7 +173,7 @@ Default value: `false`
 Wrap all capital-letter words in an element for the purpose of custom styling.
 
 ```javascript
-<TypographyHacks text="Highlights of XYZ" wrapMultipileCapitals />
+<TypographyHelper text="Highlights of XYZ" wrapMultipileCapitals />
 // Output: Highlights of <span class="caps">XYZ</span>
 ```
 
@@ -184,7 +184,7 @@ const Caps = styled.span`
   letter-spacing: -0.1em;
 `;
 
-<TypographyHacks text="Flour & Yeast" wrapAmpersand={Caps} />
+<TypographyHelper text="Flour & Yeast" wrapAmpersand={Caps} />
 // Output: Highlights of <span class="css-ork2sq">XYZ</span>
 ```
 
@@ -203,7 +203,7 @@ Default value: `false`
 Wrap the [ordinal indicator](https://en.wikipedia.org/wiki/Ordinal_indicator) (-st, -nd, -rd, -th) in an element for the purpose of custom styling.
 
 ```javascript
-<TypographyHacks text="The 23rd of May" wrapOrdinalIndicator />
+<TypographyHelper text="The 23rd of May" wrapOrdinalIndicator />
 // Output: The 23<span class="ords">rd</span> of May
 ```
 
@@ -214,7 +214,7 @@ const OrdinalIndicator = styled.span`
   letter-spacing: -0.1em;
 `;
 
-<TypographyHackstext="The 23rd of May" wrapOrdinalIndicator={OrdinalIndicator} />
+<TypographyHelpertext="The 23rd of May" wrapOrdinalIndicator={OrdinalIndicator} />
 // Output:The 23<span class="css-ork2sq">rd</span> of May
 ```
 
@@ -250,21 +250,21 @@ Default value: `false`
 
 
 ```javascript
-<TypographyHacks text="“’Em shouted, ‘free the flour!’”" wrapQuotes />
+<TypographyHelper text="“’Em shouted, ‘free the flour!’”" wrapQuotes />
 // Output: <span class="left-double-quote">“</span><span class="apostrophe">’</span>Em shouted, <span class="left-single-quote">‘</span>free the flour!<span class="right-single-quote">’</span><span class="right-double-quote">”</span>
 ```
 
 Using a single element:
 
 ```javascript
-<TypographyHacks text="“’Em shouted, ‘free the flour!’”" wrapQuotes={<i />} />
+<TypographyHelper text="“’Em shouted, ‘free the flour!’”" wrapQuotes={<i />} />
 // Output: <i>“</i><i>’</i>Em shouted, <i>‘</i>free the flour!<i>’</i><i>”</i>
 ```
 
 Using a `WrapQuoteElements`:
 
 ```javascript
-<TypographyHacks 
+<TypographyHelper 
   text="“’Em shouted, ‘free the flour!’”" 
   wrapQuotes={{
     leftDouble: <span className="ldq" />,
@@ -306,21 +306,21 @@ Default value: `false`
   ```
 
 ```javascript
-<TypographyHacks text="(Yes) [No]" wrapParanthesis />
+<TypographyHelper text="(Yes) [No]" wrapParanthesis />
 // Output: <span class="left-paren">(</span>Yes<span class="right-paren">)</span> <span class="left-square-paren">[</span>No<span class="right-square-paren">]</span>
 ```
 
 Using a single element:
 
 ```javascript
-<TypographyHacks text="(Yes) [No]" wrapParanthesis={<b />} />
+<TypographyHelper text="(Yes) [No]" wrapParanthesis={<b />} />
 // Output: <b>(</b>Yes<b>)</b> <b>[</b>No<b>]</b>
 ```
 
 Using a `WrapParanthesisElements`:
 
 ```javascript
-<TypographyHacks 
+<TypographyHelper 
   text="(Yes) [No]" 
   wrapParanthesis={{
     leftParanthesis: <span className="lp" />,

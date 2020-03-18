@@ -3,11 +3,11 @@ import * as defaultWrapElements from './defaultWrapElements';
 import * as replace from './replace';
 import * as widont from './widont';
 import * as wrap from './wrap';
-export default class TypographyHacks extends React.Component {
+export default class TypographyHelper extends React.Component {
     /* eslint-disable react/destructuring-assignment */
     shouldComponentUpdate(nextProps) {
-        if (this.props.updateOnlyWhenTextChanges === false ||
-            nextProps.updateOnlyWhenTextChanges === false) {
+        if (this.props.updateOnlyWhenTextChanges === false
+            || nextProps.updateOnlyWhenTextChanges === false) {
             return true;
         }
         return this.props.text !== nextProps.text;

@@ -1,5 +1,5 @@
 {
-  "name": "@seamusleahy/react-typography-hacks",
+  "name": "@seamusleahy/react-typography-helper",
   "private": false,
   "version": "1.0.0",
   "description": "A React component to help with various typography needs like widow control and smart quotes",
@@ -10,11 +10,11 @@
     "styling"
   ],
   "repository": {
-    "url": "https://github.com/seamusleahy/react-typography-hacks.git",
+    "url": "https://github.com/seamusleahy/react-typography-helper.git",
     "type": "git"
   },
-  "homepage": "https://github.com/seamusleahy/react-typography-hacks",
-  "bugs": "https://github.com/seamusleahy/react-typography-hacks/issues",
+  "homepage": "https://github.com/seamusleahy/react-typography-helper",
+  "bugs": "https://github.com/seamusleahy/react-typography-helper/issues",
   "main": "dist/index.js",
   "files": [
     "LICENSE",
@@ -48,7 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.15.1",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "jest": "24.9",
+    "jest": "25.x.x",
     "jsdom": "^16.2.0",
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",

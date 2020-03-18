@@ -9,19 +9,19 @@ import {
 describe('applyWidont()', () => {
   it('will add a non-breaking space between the last two words', () => {
     expect(applyWidont('Hello World', Infinity, Infinity)).toBe(
-      'Hello\u00a0World'
+      'Hello\u00a0World',
     );
     expect(applyWidont('hello world', Infinity, Infinity)).toBe(
-      'hello\u00a0world'
+      'hello\u00a0world',
     );
     expect(applyWidont('hello world  ', Infinity, Infinity)).toBe(
-      'hello\u00a0world  '
+      'hello\u00a0world  ',
     );
     expect(applyWidont('Well hello\nworld', Infinity, Infinity)).toBe(
-      'Well hello\u00a0world'
+      'Well hello\u00a0world',
     );
     expect(applyWidont('hello\nworld.', Infinity, Infinity)).toBe(
-      'hello\u00a0world.'
+      'hello\u00a0world.',
     );
   });
 
@@ -44,7 +44,7 @@ describe('applyWidont()', () => {
 
   it('will add a non-breaking space when the last two words are shorter than maxLastTwoWordsLength', () => {
     expect(applyWidont('Hello World  ', Infinity, 11)).toBe(
-      'Hello\u00a0World  '
+      'Hello\u00a0World  ',
     );
   });
 });
@@ -56,8 +56,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('hElLo WoRlD'),
         <span className="w" />,
         Infinity,
-        Infinity
-      )
+        Infinity,
+      ),
     ).toEqual([newElementTokenWithText(<span className="w" />, 'hElLo WoRlD')]);
 
     expect(
@@ -65,8 +65,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('hElLo  WoRlD  '),
         <span className="w" />,
         Infinity,
-        Infinity
-      )
+        Infinity,
+      ),
     ).toEqual([
       newElementTokenWithText(<span className="w" />, 'hElLo  WoRlD'),
       newTextToken('  '),
@@ -77,8 +77,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('Where in the world.'),
         <span className="w" />,
         Infinity,
-        Infinity
-      )
+        Infinity,
+      ),
     ).toEqual([
       newTextToken('Where in '),
       newElementTokenWithText(<span className="w" />, 'the world.'),
@@ -91,8 +91,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('Hello World'),
         <span className="w" />,
         4,
-        Infinity
-      )
+        Infinity,
+      ),
     ).toEqual(createTokenListFromString('Hello World'));
   });
 
@@ -102,8 +102,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('Hello World'),
         <span className="w" />,
         Infinity,
-        10
-      )
+        10,
+      ),
     ).toEqual(createTokenListFromString('Hello World'));
   });
 
@@ -113,8 +113,8 @@ describe('applyWrapWidont()', () => {
         createTokenListFromString('Hello World  '),
         <span className="w" />,
         Infinity,
-        11
-      )
+        11,
+      ),
     ).toEqual([
       newElementTokenWithText(<span className="w" />, 'Hello World'),
       newTextToken('  '),
