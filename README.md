@@ -11,9 +11,9 @@ All the TypeScript definitions are included.
 
 ## Installation
 ```
-npm install react-typography-helper"
+npm install @seamusleahy/react-typography-helper"
 // or
-yarn add react-typography-helper"
+yarn add @seamusleahy/react-typography-helper"
 ```
 ## How-to use
 ```javascript
